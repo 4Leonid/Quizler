@@ -86,6 +86,7 @@ class QuizlerViewController: UIViewController {
     return element
   }()
 
+  //  MARK: - Override Methods
   override func viewDidLoad() {
     super.viewDidLoad()
     setViews()
@@ -93,7 +94,7 @@ class QuizlerViewController: UIViewController {
     updateUI()
   }
   
-  @objc func answerButtonPressed(_ sender: UIButton) {
+  @objc private func answerButtonPressed(_ sender: UIButton) {
     guard let userAnswer = sender.currentTitle else { return }
     let userCorrect = quizBrain.checkAnswer(userAnswer)
     
@@ -126,6 +127,7 @@ extension QuizlerViewController {
       button.setTitle(quizBrain.getAnswerText()[number], for: .normal)
     }
   }
+  
   private func clearButtons(_ buttons: UIButton...) {
     buttons.forEach {
       $0.backgroundColor = .clear
